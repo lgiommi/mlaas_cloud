@@ -1,0 +1,12 @@
+galaxy_info:
+  role_name: mlaas_role
+  author: luca.giommi3@unibo.it
+  description: Setup environment for using mlaas
+  company: INFN
+  license: Apache
+  min_ansible_version: 2.0
+  platforms:
+  - name: RedHat
+  - name: Debian
+  galaxy_tags:
+    - mlaas_env
