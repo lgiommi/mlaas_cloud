@@ -6,8 +6,14 @@
     path: "{{ work_dir }}"
     state: directory
 
-- name: download folder with data
-  shell: "cd {{ work_dir }} && gdown https://drive.google.com/uc?id=1SFL-gYzu9RIIDFY4uBt-_TamHHmfROVG && tar -xzvf folder_test.tar.gz && rm folder_test.tar.gz"
+- name: Download folder with data
+  command: "{{ item }}"
+  with_items:
+    - gdown https://drive.google.com/uc?id=1SFL-gYzu9RIIDFY4uBt-_TamHHmfROVG
+    - tar -xzvf folder_test.tar.gz
+    - rm folder_test.tar.gz
+  args:
+    chdir: "{{ work_dir }}"
 
 - name: Pull default Docker image
   docker_image:
