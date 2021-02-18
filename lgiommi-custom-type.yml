@@ -10,7 +10,7 @@ node_types:
       run:
         type: string
         default: "false"
-      data_folder:
+      work_dir:
         type: string
         default: "/home/ubuntu/mlaas_folder/folder_test"
       default_container_name:
@@ -37,7 +37,7 @@ node_types:
           inputs:
             role_name: {get_property:[SELF, role_name]}
             run: {get_property:[SELF, run]}
-            data_folder: {get_property:[SELF, data_folder]}
+            work_dir: {get_property:[SELF, work_dir]}
             default_container_name: {get_property:[SELF, default_container_name]}
             default_container_image: {get_property:[SELF, default_container_image]}
             default_container_command: {get_property:[SELF, default_container_command]}

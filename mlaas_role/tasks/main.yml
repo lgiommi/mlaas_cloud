@@ -1,3 +1,9 @@
+- name: Install gdown using apt
+  shell: "pip install gdown"
+
+- name: download folder with data
+  shell: "cd {{ work_dir }} && gdown https://drive.google.com/uc?id=1SFL-gYzu9RIIDFY4uBt-_TamHHmfROVG && tar -xzvf folder_test.tar.gz && rm folder_test.tar.gz"
+
 - name: Pull default Docker image
   docker_image:
     name: "{{ default_container_image }}"
@@ -10,6 +16,6 @@
     image: "{{ default_container_image }}"
     command: "{{ default_container_command }}"
     volumes:
-      - "{{ data_folder }}:/data/folder_test"
+      - "{{ work_dir }}/folder_test:/data/folder_test"
     state: started
   when: run=="true"
