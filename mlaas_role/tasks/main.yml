@@ -1,8 +1,11 @@
 - name: Install gdown using apt
   shell: "pip install gdown"
 
+- name: create the working directory
+  shell: "mkdir {{ work_dir }} && cd {{ work_dir }}"
+  
 - name: download folder with data
-  shell: "cd {{ work_dir }} && gdown https://drive.google.com/uc?id=1SFL-gYzu9RIIDFY4uBt-_TamHHmfROVG && tar -xzvf folder_test.tar.gz && rm folder_test.tar.gz"
+  shell: "gdown https://drive.google.com/uc?id=1SFL-gYzu9RIIDFY4uBt-_TamHHmfROVG && tar -xzvf folder_test.tar.gz && rm folder_test.tar.gz"
 
 - name: Pull default Docker image
   docker_image:

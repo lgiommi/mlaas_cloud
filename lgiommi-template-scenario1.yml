@@ -25,7 +25,7 @@ topology_template:
       default: "false"
     work_dir:
       type: string
-      default: "/home/ubuntu/mlaas_folder/folder_test"
+      default: "work_dir"
     default_container_name:
       type: string
       default: "docker"
