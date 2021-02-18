@@ -10,9 +10,9 @@ node_types:
       run:
         type: string
         default: "false"
-      volumes:
+      data_folder:
         type: string
-        default: "/home/ubuntu/mlaas_folder/folder_test:/data/folder_test"
+        default: "/home/ubuntu/mlaas_folder/folder_test"
       default_container_name:
         type: string
         default: "docker"
@@ -37,7 +37,7 @@ node_types:
           inputs:
             role_name: {get_property:[SELF, role_name]}
             run: {get_property:[SELF, run]}
-            volumes: {get_property:[SELF, volumes]}
+            data_folder: {get_property:[SELF, data_folder]}
             default_container_name: {get_property:[SELF, default_container_name]}
             default_container_image: {get_property:[SELF, default_container_image]}
             default_container_command: {get_property:[SELF, default_container_command]}

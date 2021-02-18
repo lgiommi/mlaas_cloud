@@ -10,6 +10,6 @@
     image: "{{ default_container_image }}"
     command: "{{ default_container_command }}"
     volumes:
-      - "{{ volumes }}"
+      - "{{ data_folder }}:/data/folder_test"
     state: started
   when: run=="true"

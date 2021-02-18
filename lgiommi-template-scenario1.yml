@@ -23,9 +23,9 @@ topology_template:
     run:
       type: string
       default: "false"
-    volumes:
+    data_folder:
       type: string
-      default: "/home/ubuntu/mlaas_folder/folder_test:/data/folder_test"
+      default: "/home/ubuntu/mlaas_folder/folder_test"
     default_container_name:
       type: string
       default: "docker"
@@ -41,7 +41,7 @@ topology_template:
       type: tosca.nodes.DODAS.MLaaS 
       properties:
         run: { get_input: run }
-        volumes: { get_input: volumes }
+        data_folder: { get_input: data_folder }
         default_container_name: { get_input: default_container_name }
         default_container_image: { get_input: default_container_image }
         default_container_command: { get_input: default_container_command }
