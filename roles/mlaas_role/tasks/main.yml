@@ -10,6 +10,6 @@
     image: "{{ default_container_image }}"
     command: "{{ default_container_command }}"
     volumes:
-      - "/home/ubuntu/mlaas_folder/folder_test:/data/folder_test"
+      - "{{ volumes }}"
     state: started
   when: run=="true"
