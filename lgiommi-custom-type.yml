@@ -9,10 +9,10 @@ node_types:
     properties:
       run:
         type: string
-        default: "false"
+        default: "true"
       work_dir:
         type: string
-        default: "/home/ubuntu/mlaas_folder/folder_test"
+        default: "/tmp/work_dir"
       default_container_name:
         type: string
         default: "docker"
