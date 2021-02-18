@@ -1,7 +1,7 @@
 ---
 tosca_definitions_version: tosca_simple_yaml_1_2
 
-imports:  (questo sotto è il tuo type LUCA ) 
+imports:
   - https://github.com/lgiommi/mlaas_cloud/blob/master/lgiommi-custom-type.yml
 
 description: TOSCA template for MLaaS - LUCA
