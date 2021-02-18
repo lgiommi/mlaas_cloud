@@ -1,0 +1,43 @@
+tosca_definitions_version: tosca_simple_yaml_1_2
+
+imports:
+  - https://raw.githubusercontent.com/dodas-ts/dodas-apps/master/tosca-types/dodas_types.yml
+
+node_types:
+  tosca.nodes.DODAS.MLaaS:
+    derived_from: tosca.nodes.SoftwareComponent
+    properties:
+      run:
+        type: string
+        default: "false"
+      volumes:
+        type: string
+        default: "/home/ubuntu/mlaas_folder/folder_test:/data/folder_test"
+      default_container_name:
+        type: string
+        default: "docker"
+      default_container_image:
+        type: string
+        default: "felixfelicislp/mlaas_cloud:mlaas_test_2"
+      default_container_command:
+        type: string
+        default: "--files=files_test.txt --labels=labels_test.txt --model=keras_model.py --params=params_test.json"
+      role_name:
+        type: string
+        required: false
+        default: mlaas_cloud
+    artifacts:
+      ml_role:
+        file: git+https://github.com/lgiommi/mlaas_cloud
+        type: tosca.artifacts.AnsibleGalaxy.role
+    interfaces:
+      Standard:
+        start:
+          implementation: https://raw.githubusercontent.com/dodas-ts/dodas-apps/master/tosca-types/dodas_artifacts/ansible.yaml
+          inputs:
+            role_name: {get_property:[SELF, role_name]}
+            run: {get_property:[SELF, run]}
+            volumes: {get_property:[SELF, volumes]}
+            default_container_name: {get_property:[SELF, default_container_name]}
+            default_container_image: {get_property:[SELF, default_container_image]}
+            default_container_command: {get_property:[SELF, default_container_command]}

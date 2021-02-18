@@ -1,0 +1,73 @@
+---
+tosca_definitions_version: tosca_simple_yaml_1_2
+
+imports:  (questo sotto è il tuo type LUCA ) 
+  - https://gist.githubusercontent.com/spigad/3911bae13e8beb38f7d6a1b23ddbb3bd/raw/9f574917f1f77f87ef78d1e1d911a3c93130eeff/esempio-l-giommi-custom-type
+
+description: TOSCA template for MLaaS - LUCA
+
+topology_template:
+  inputs:
+    num_cpus:
+      type: integer
+      default: 4
+    mem_size:
+      type: string
+      default: "8 GB"
+    server_image:
+      type: string
+      # default: ost://cloud-api-pub.cr.cnaf.infn.it/94a76d1e-cacb-48ce-ad69-c0b26fd9bb53 # ubuntu 16.04
+      default: ost://cloud-api-pub.cr.cnaf.infn.it/9ed8e7ef-e932-4850-9576-805668f7ce25 # ubuntu 18.04  
+
+    # MLaaS
+    run:
+      type: string
+      default: "false"
+    volumes:
+      type: string
+      default: "/home/ubuntu/mlaas_folder/folder_test:/data/folder_test"
+    default_container_name:
+      type: string
+      default: "docker"
+    default_container_image:
+      type: string
+      default: "felixfelicislp/mlaas_cloud:mlaas_test_2"
+    default_container_command:
+      type: string
+      default: "--files=files_test.txt --labels=labels_test.txt --model=keras_model.py --params=params_test.json"
+
+  node_templates:
+    mlaas_install:
+      type: tosca.nodes.DODAS.MLaaS 
+      properties:
+        run: { get_input: run }
+        volumes: { get_input: volumes }
+        default_container_name: { get_input: default_container_name }
+        default_container_image: { get_input: default_container_image }
+        default_container_command: { get_input: default_container_command }
+      requirements:
+        - host: vm_server
+
+    vm_server:
+      type: tosca.nodes.indigo.Compute
+      capabilities:
+        endpoint:
+          properties:
+            network_name: PUBLIC
+            ports:
+              jupyter:
+                protocol: tcp
+                source: 8888
+              grafana:
+                protocol: tcp
+                source: 3000
+        scalable:
+          properties:
+            count: 1
+        host:
+          properties:
+            num_cpus: { get_input: num_cpus }
+            mem_size: { get_input: mem_size }
+        os:
+          properties:
+            image: { get_input: server_image }
