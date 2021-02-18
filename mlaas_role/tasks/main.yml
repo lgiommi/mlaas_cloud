@@ -1,9 +1,9 @@
 - name: Install gdown using apt
   shell: "pip install gdown"
 
-- name: Creates directory
+- name: Creates woking directory
   file:
-    path: /tmp/{{ work_dir }}
+    path: "{{ work_dir }}"
     state: directory
 
 - name: download folder with data
@@ -21,6 +21,6 @@
     image: "{{ default_container_image }}"
     command: "{{ default_container_command }}"
     volumes:
-      - "/tmp/{{ work_dir }}/folder_test:/data/folder_test"
+      - "{{ work_dir }}/folder_test:/data/folder_test"
     state: started
   when: run=="true"
