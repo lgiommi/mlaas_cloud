@@ -35,9 +35,9 @@ node_types:
         start:
           implementation: https://raw.githubusercontent.com/dodas-ts/dodas-apps/master/tosca-types/dodas_artifacts/ansible.yaml
           inputs:
-            role_name: {get_property:[SELF, role_name]}
-            run: {get_property:[SELF, run]}
-            work_dir: {get_property:[SELF, work_dir]}
-            default_container_name: {get_property:[SELF, default_container_name]}
-            default_container_image: {get_property:[SELF, default_container_image]}
-            default_container_command: {get_property:[SELF, default_container_command]}
+            role_name: { get_property: [ SELF, role_name ] }
+            run: { get_property: [ SELF, run ] }
+            work_dir: { get_property : [SELF, work_dir]}
+            default_container_name: { get_property: [ SELF, default_container_name ] }
+            default_container_image: { get_property: [ SELF, default_container_image ] }
+            default_container_command: { get_property: [ SELF, default_container_command ] }
