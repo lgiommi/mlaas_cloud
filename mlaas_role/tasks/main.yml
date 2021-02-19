@@ -1,7 +1,7 @@
 - name: Install gdown using apt
   shell: "pip install gdown"
 
-- name: Creates woking directory
+- name: Creates working directory
   file:
     path: "{{ work_dir }}"
     state: directory

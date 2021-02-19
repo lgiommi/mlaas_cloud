@@ -25,7 +25,7 @@ topology_template:
       default: "false"
     work_dir:
       type: string
-      default: "work_dir"
+      default: "/tmp/work_dir"
     default_container_name:
       type: string
       default: "docker"
