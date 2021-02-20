@@ -1,5 +1,5 @@
-- name: Install gdown using apt
-  shell: "pip install gdown"
+- name: Install gdown and docker with pip
+  shell: "pip install gdown && pip install docker"
 
 - name: Creates working directory
   file:
