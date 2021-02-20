@@ -71,3 +71,9 @@ topology_template:
         os:
           properties:
             image: { get_input: server_image }
+    
+  outputs:
+    node_ip:
+      value: { get_attribute: [ vm_server, public_address, 0 ] }
+    node_creds:
+      value: { get_attribute: [ vm_server, endpoint, credential, 0 ] }
