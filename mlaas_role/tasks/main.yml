@@ -1,11 +1,14 @@
 - name: Install gdown with pip
   pip: name=gdown
 
-- name: Install docker
-  pip: name=docker
+- name: install docker [Ubuntu]
+  shell:
+    cmd: curl https://get.docker.com | sh
+    creates: /usr/bin/docker
+    warn: False
 
-- name: Ensure service is enabled
-  command: service docker restart
+- name: install docker-py
+  pip: name=docker-py
 
 - name: Creates working directory
   file:
@@ -24,7 +27,7 @@
 - name: Pull default Docker image
   docker_image:
     name: "{{ default_container_image }}"
-    pull: yes
+  become: true
 
 - name: Create default containers
   docker_container:
