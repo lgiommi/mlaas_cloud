@@ -1,4 +1,4 @@
-run: false
+run: true
 work_dir: /tmp/work_dir
 default_container_name: docker
 default_container_image: felixfelicislp/mlaas_cloud:mlaas_test_2
