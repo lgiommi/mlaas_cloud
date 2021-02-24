@@ -1,5 +1,5 @@
-run: "true"
-work_dir: /tmp/work_dir_try
+run: "false"
+work_dir: /tmp/work_dir
 default_container_name: docker
-default_container_image: felixfelicislp/mlaas_cloud:mlaas_test_2
+default_container_image: felixfelicislp/mlaas_cloud:mlaas_voms
 default_container_command: --files=files_test.txt --labels=labels_test.txt --model=keras_model.py --params=params_test.json

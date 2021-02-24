@@ -22,7 +22,7 @@ topology_template:
     # MLaaS
     run:
       type: string
-      default: "false"
+      default: "true"
     work_dir:
       type: string
       default: "/tmp/work_dir"
@@ -31,7 +31,7 @@ topology_template:
       default: "docker"
     default_container_image:
       type: string
-      default: "felixfelicislp/mlaas_cloud:mlaas_test_2"
+      default: "felixfelicislp/mlaas_cloud:mlaas_voms"
     default_container_command:
       type: string
       default: "--files=files_test.txt --labels=labels_test.txt --model=keras_model.py --params=params_test.json"
