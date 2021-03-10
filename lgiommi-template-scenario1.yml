@@ -66,8 +66,9 @@ topology_template:
             count: 1
         host:
           properties:
-            num_cpus: { get_input: num_cpus }
-            mem_size: { get_input: mem_size }
+            instance_type: "dodas.xlarge"
+            #num_cpus: { get_input: num_cpus }
+            #mem_size: { get_input: mem_size }
         os:
           properties:
             image: { get_input: server_image }
